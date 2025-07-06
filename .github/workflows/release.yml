@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     name: Build
-    uses: ./.github/workflows/release.yml
+    uses: ./.github/workflows/build.yml
 
   release:
     name: "Create Release"
@@ -39,7 +39,7 @@ jobs:
           for arch in amd64 legacy steamdeck rog-ally aarch64 armv9
           do
             cp linux-$arch/*.AppImage "artifacts/Eden-Linux-${FORGEJO_TAG}-${arch}.AppImage"
-            # cp linux-$arch/*.AppImage.zsync "artifacts/Eden-Linux-${FORGEJO_TAG}-${arch}.AppImage.zsync"
+            cp linux-$arch/*.AppImage.zsync "artifacts/Eden-Linux-${FORGEJO_TAG}-${arch}.AppImage.zsync"
           done
 
           cp android/*.apk artifacts/Eden-Android-${FORGEJO_TAG}.apk
