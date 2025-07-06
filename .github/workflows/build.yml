@@ -13,8 +13,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Get Variables and Clone
-        uses: ./.github/workflows/clone
+      - name: Get Variables
+        uses: ./.github/workflows/parse
+
+      - name: Checkout Repo
+        shell: bash
+        run: |
+          while ! git clone https://git.bixed.xyz/Bix/eden.git eden; do
+            echo "Clone failed!"
+            sleep 5
+            echo "Trying clone again..."
+            rm -rf ./eden || true
+          done
+
+          cd eden
+          git reset --hard $FORGEJO_TAG
 
       - name: Pack
         run: |
