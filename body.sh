@@ -3,11 +3,6 @@
 BASE_DOWNLOAD_URL="https://github.com/eden-emulator/Releases/releases/download"
 TAG="$FORGEJO_TAG"
 
-if [ "$FORGEJO_TOKEN" = "" ]; then
-  echo "You must supply a Forgejo API Token via the FORGEJO_TOKEN environment variable."
-  exit 1
-fi
-
 linux() {
   ARCH="$1"
   PRETTY_ARCH="$2"
