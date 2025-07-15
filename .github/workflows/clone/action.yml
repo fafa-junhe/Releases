@@ -22,5 +22,5 @@ runs:
         done
 
         cd eden
-        git reset --hard $FORGEJO_TAG
+        git reset --hard d7574b2878
         git submodule update --init --recursive
